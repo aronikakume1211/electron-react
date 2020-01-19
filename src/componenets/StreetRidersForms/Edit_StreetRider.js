@@ -256,7 +256,7 @@ export default class Street_Riders_Edit extends Component {
                                     <div className="col-sm-6">
                                         <label htmlFor="age">ዞን</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             className="form-control"
                                             value={this.state.Zone}
                                             onChange={this.onChangeZone}
@@ -267,7 +267,7 @@ export default class Street_Riders_Edit extends Component {
                                     <div className="col-sm-6">
                                         <label htmlFor="sex">ወረዳ</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             className="form-control"
                                             value={this.state.woreda}
                                             onChange={this.onChangeWoreda}
@@ -276,7 +276,7 @@ export default class Street_Riders_Edit extends Component {
                                     <div className="col-sm-6">
                                         <label htmlFor="age">ቀበሌ</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             className="form-control"
                                             value={this.state.kebele}
                                             onChange={this.onChangeKebele}
