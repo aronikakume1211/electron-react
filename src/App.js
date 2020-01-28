@@ -77,11 +77,10 @@ class App extends Component {
         <div>
           <NavBar />
           <Switch>
-            <Route exact path="/" component={Login} />
+            {/* <Route exact path="/" component={Login} /> */}
             <Route path="/home/Home" component={SideBar} />
-            <Route path="/admin" component={Admin} />
+            <Route exact path="/user" component={Admin} />
           </Switch>
-
         </div>
       </Router>
       // <div>

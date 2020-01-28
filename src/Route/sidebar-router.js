@@ -40,7 +40,6 @@ import Delete_Home from '../componenets/HomeForms/Delete_Home';
 import Edit_Home from '../componenets/HomeForms/Edit_Home';
 import Home_Form from '../componenets/HomeForms/Home_form';
 import Login from './Login';
-
 const delete_routes = [
     {
         path: "/hiv-adis-positive/delete/",
