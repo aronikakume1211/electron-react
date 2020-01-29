@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import DataStore from 'nedb'
-import {ExcelFile, ExcelSheet} from "react-data-export";
+import ReactExport from "react-data-export";
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 let database;
+
 class judgment_dbt_table extends React.Component {
   constructor() {
     super();
@@ -11,13 +15,9 @@ class judgment_dbt_table extends React.Component {
       startDate: '',
       endDate: '',
       Judgment_Data: [],
-      temp: ''
+      temp: '',
     }
   }
-  lie = () => {
-    alert("Hello wowo")
-  }
-
   onChangeStartDate = (e) => {
     this.setState({
       startDate: e.target.value
@@ -40,8 +40,7 @@ class judgment_dbt_table extends React.Component {
       this.setState({
         temp: this.state.Judgment_Data
       })
-      console.log(this.state.Judgment_Data);
-
+     
     })
   }
   componentDidMount() {
@@ -56,7 +55,7 @@ class judgment_dbt_table extends React.Component {
       })
       database.remove({ _id: id }, {}, (err) => {
         if (err) console.log(err);
-    })
+      })
     }
   }
   //table body
@@ -120,37 +119,10 @@ class judgment_dbt_table extends React.Component {
       })
     }
   }
-  //report data
-  _reportResult=(startDate, endDate)=>{
-    const multiDataSet = [
-    {
-        columns: ["Name", "Salary", "Sex"],
-        data: [
-            ["Johnson", 30000, "Male"],
-            ["Monika", 355000, "Female"],
-            ["Konstantina", 20000, "Female"],
-            ["John", 250000, "Male"],
-            ["Josef", 450500, "Male"],
-        ]
-    },
-    // {
-    //     xSteps: 1, // Will start putting cell with 1 empty cell on left most
-    //     ySteps: 5, //will put space of 5 rows,
-    //     columns: ["Name", "Department"],
-    //     data: [
-    //         ["Johnson", "Finance"],
-    //         ["Monika", "IT"],
-    //         ["Konstantina", "IT Billing"],
-    //         ["John", "HR"],
-    //         ["Josef", "Testing"],
-    //     ]
-    // }
-];
-    alert("Hello report")
-  }
   render() {
     return (
       <div className="table-responsive">
+
         <div className="row">
           <div className="col-sm-2"></div>
           <div className="col-sm-3">
@@ -180,19 +152,28 @@ class judgment_dbt_table extends React.Component {
           <div className="col-sm-1">
             <div className="form-group">
               <label htmlFor="fname">*</label>
-              <button className="form-control glyphicon glyphicon-search btn btn-primary " onClick={() => this.SearchResult(this.state.startDate, this.state.endDate)}>
+              <button className="form-control glyphicon glyphicon-search btn btn-primary " style={{padding:"2"}} onClick={() => this.SearchResult(this.state.startDate, this.state.endDate)}>
                 search
             </button>
             </div>
           </div>
           <div className="col-sm-2">
             <div className="form-group">
-            <ExcelFile>
-                <ExcelSheet dataSet={multiDataSet} name="Organization"/>
-            </ExcelFile>
-              <button className="form-control glyphicon glyphicon-cloud-download btn btn-primary " onClick={() => this._reportResult(this.state.startDate, this.state.endDate)}>
-               ሪፖርት
-            </button>
+            <label htmlFor="fname">*</label>
+              <ExcelFile element={<button className="form-control glyphicon glyphicon-cloud-download btn btn-primary " >
+                ሪፖርት</button>}>
+                <ExcelSheet data={this.state.Judgment_Data} name="Judgment">
+                  <ExcelColumn label="ተ.ቁ" value="_id" />
+                  <ExcelColumn label="የኢንዱስትሪ መደብ" value="code" />
+                  <ExcelColumn label="የአቤቱታዎች ብዛት" value="total" />
+                  <ExcelColumn label="የድርጅቱ ይዞታ" value="coverage" />
+                  <ExcelColumn label="አቤቱታው የቀረበው" value="byWhome" />
+                  <ExcelColumn label="የአቤቱታው ምክንያት" value="reason" />
+                  <ExcelColumn label="የቀረበበት ቀን" value="startDate" />
+                  <ExcelColumn label="የተደረሰበት ውጤት" value="result" />
+                  <ExcelColumn label="የተጠናቀቀበት ቀን" value="endDate" />
+                </ExcelSheet>
+              </ExcelFile>
             </div>
           </div>
         </div>
