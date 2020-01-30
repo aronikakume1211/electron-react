@@ -6,7 +6,6 @@ class Judgment_dbt_form extends Component {
   constructor() {
     super();
     this.state = {
-
       code: '',
       total: '',
       coverage: '',
@@ -113,12 +112,6 @@ class Judgment_dbt_form extends Component {
     }
   }
   render() {
-    // const forms = {
-    //     borderColor: 'red',
-    // }
-    // const normal = {
-    //  borderColor:'black'
-    // }
     return (
       <div style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "10%" }}>
         <form onSubmit={this.onSubmit} >
@@ -207,7 +200,7 @@ class Judgment_dbt_form extends Component {
               </div>
             </div>
           </div>
-          <Link to="/judge"
+          <Link to="/user"
             type="button"
             className="btn btn-primary"
             style={{

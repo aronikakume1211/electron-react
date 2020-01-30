@@ -5,12 +5,12 @@ import Judgment_dbt_form from '../Components/Judgment_debat/judgment_dbt_form';
 
 const routes=[
   {
-    path:'/judge',
+    path:'/user',
     exact:true,
     main:()=> <Judgment_dbt_table />
   },
   {
-    path:'/judge/form',
+    path:'/user/form',
     main:()=> <Judgment_dbt_form />
   }
 ]
@@ -18,7 +18,7 @@ function Judgment_debate() {
   return (
     <div>
       <Link
-      to="/judge/form" >
+      to="/user/form" >
         <button
         className="btn btn-primary"
         style={{

@@ -5,12 +5,12 @@ import Negotiator_form from '../Components/Negotioator/Negotioator_form';
 
 const routes = [
     {
-        path: '/user',
+        path: '/judge',
         exact: true,
         main: () => <Negotiator_table />
     },
     {
-        path: '/user/nego_forms',
+        path: '/judge/nego_forms',
         main: () => <Negotiator_form />
     }
 ]
@@ -19,7 +19,7 @@ class Negotiator extends Component {
         return (
             <div>
                 <Link
-                    to="/user/nego_forms" >
+                    to="/judge/nego_forms" >
                     <button
                         className="btn btn-primary"
                         style={{

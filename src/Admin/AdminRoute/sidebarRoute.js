@@ -10,18 +10,17 @@ import Cause_Accident from '../Admin_modules/Cause_Accident';
 import Employe_age_region from '../Admin_modules/employee_age_gap';
 import Vaccancy from '../Admin_modules/Vaccancy';
 import Registerd_Vaccancy from '../Admin_modules/Registerd_vaccancy';
-import Judgmnet_Edit from '../Components/Judgment_debat/judgment_edit';
-import Judgment_Delete from '../Components/Judgment_debat/judgment_delete';
 const routes = [
+   
     {
         path: "/user",
-        main: () => <Negotioator />,
-        sidebar: () => <div> አስማሚ የቀረቡ አቤቱታዎች</div>
+        main: () => <Judgment_debate />,
+        sidebar: () => <div>አስማሚ የቀረቡ አቤቱታዎች</div>
     },
     {
         path: "/judge",
-        main: () => <Judgment_debate />,
-        sidebar: () => <div>ፍ/ቤት የቀረቡ ክርክሮች</div>
+        main: () => <Negotioator />,
+        sidebar: () => <div> ፍ/ቤት የቀረቡ ክርክሮች</div>
     },
     {
         path: "/employee_emplr",
@@ -163,10 +162,7 @@ export default class sidebar extends Component {
                                     }
 
                                 </Switch>
-                                {/* Delete routes */}
-                                <Route path ="/judge/delete/:id" component={Judgment_Delete} />
-                                {/* edit routes*/}
-                                <Route path="/judge/edit/:id" component={Judgmnet_Edit} />
+                               
                             </div>
 
                         </div>
