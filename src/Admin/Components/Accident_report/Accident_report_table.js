@@ -456,7 +456,7 @@ class Accident_report_table extends Component {
     )
   }
    //search items
-   SearchResult = () => {
+  SearchResult = () => {
     if (this.state.startDate != '' && this.state.endDate !== '') {
       let result = this.state.Accident_Report_Data.filter(item => item.date >= this.state.startDate)
         .filter(items => items.date <= this.state.endDate)
@@ -517,24 +517,21 @@ class Accident_report_table extends Component {
                 <ExcelFile filename="በሥራ ላይ አደጋ ማጠቃለያ ሪፖርት" element={<button className="form-control glyphicon glyphicon-cloud-download btn btn-primary " >
                   ሪፖርት</button>}>
                   <ExcelSheet data={this.state.Accident_Report_Data} name="በሥራ ላይ አደጋ ማጠቃለያ ሪፖርት">
-                    <ExcelColumn label="የድርጅቱ ስም"  />
-                    <ExcelColumn label="የኢንዱስትሪ መደብ"  />
-                    <ExcelColumn label="የድርጅቱ ይዞታ"  />
-                    <ExcelColumn label="አቤቱታው የቀረበው"  />
-                    <ExcelColumn label="የአቤቱታው ምክንያት"  />
-                    <ExcelColumn label="የቀረበበት ቀን"  />
-                    <ExcelColumn label="የተደረሰበት ውጤት"  />
-                    <ExcelColumn label="የተጠናቀቀበት ቀን"  />
-                    <ExcelSheet>
-                        <ExcelColumn label="የድርጅቱ ስም"  />
-                        <ExcelColumn label="የኢንዱስትሪ መደብ"  />
-                        <ExcelColumn label="የድርጅቱ ይዞታ"  />
-                        <ExcelColumn label="አቤቱታው የቀረበው"  />
-                        <ExcelColumn label="የአቤቱታው ምክንያት"  />
-                        <ExcelColumn label="የቀረበበት ቀን"  />
-                        <ExcelColumn label="የተደረሰበት ውጤት"  />
-                        <ExcelColumn label="የተጠናቀቀበት ቀን"  />
-                  </ExcelSheet>
+                    <ExcelColumn label="የድርጅቱ ስም" value="orgName" />
+                    <ExcelColumn label="የኢንዱስትሪ መደብ" value="code" />
+                    <ExcelColumn label="የወንድ ሰራተኛ ብዛት" value="maleEmployee" />
+                    <ExcelColumn label="የሴት ሰራተኛ ብዛት" value="femaleEmployee" />
+                    <ExcelColumn label="ሞት ያላደረሱ አደጋዎች በፈቃድ ወንድ" value="malePermitedDeath" />
+                    <ExcelColumn label="ሞት ያላደረሱ አደጋዎች  በፈቃድ ሴት" value="femalePermitedDeath" />
+                    <ExcelColumn label="ሞት ያላደረሱ አደጋዎች ያለፍቃድ ወንድ" value="maleNotPermitedDeath" />
+                    <ExcelColumn label="ሞት ያላደረሱ አደጋዎች  ያለፍቃድ ሴት" value="femaleNotPermitedDeath" />
+                    <ExcelColumn label="የወንድ ሞት አደጋዎች" value="maleDeath" />
+                    <ExcelColumn label="የሴት ሞት አደጋዎች" value="femaleDeath" />
+                    <ExcelColumn label="የፈቃድ ቀን ብዛት" value="totalPermited" />
+                    <ExcelColumn label="ቀን" value="date" />
+                    <ExcelColumn label="የባከነ ገንዘብ በደመወዝ ሲሰላ" value="moneyExpanditur" />
+                    <ExcelColumn label="በስራ ላይ አደጋ ምክንያት የወጣ ገንዘብ (በብር)" value="acciReasonExpan" />
+                   
                   </ExcelSheet>
                   
                 </ExcelFile>

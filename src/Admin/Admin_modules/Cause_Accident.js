@@ -10,7 +10,7 @@ const routes=[
     main:()=> <Cause_Accident_table />
   },
   {
-    path:'/cause_accident/form',
+    path:'/affected_body/forms',
     main:()=> <Cause_Accident_form />
   }
 ]
@@ -18,7 +18,7 @@ function Cause_Accident() {
   return (
     <div>
       <Link
-      to="/cause_accident/form" >
+      to="/affected_body/forms" >
         <button
         className="btn btn-primary"
         style={{

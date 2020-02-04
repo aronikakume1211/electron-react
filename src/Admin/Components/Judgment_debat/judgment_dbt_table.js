@@ -286,8 +286,8 @@ class judgment_dbt_table extends React.Component {
           <td>{current.result}</td>
           <td>{current.endDate}</td>
           <td>
-            <button className="btn btn-primary" onClick={() => this.handleEditform(current._id, index)} style={{  }} ><span className=" glyphicon glyphicon-trash"></span>Edit</button>
-            <button className="btn btn-danger" onClick={() => this.DeleteItem(current._id)} style={{  }}> <span className="glyphicon glyphicon-edit"></span>Delete</button>
+            <button className="btn btn-primary" onClick={() => this.handleEditform(current._id, index)} style={{  }} ><span className=" glyphicon glyphicon-edit"></span>Edit</button>
+            <button className="btn btn-danger" onClick={() => this.DeleteItem(current._id)} style={{  }}> <span className="glyphicon glyphicon-trash"></span>Delete</button>
           </td>
         </tr>)
     })
@@ -315,7 +315,8 @@ class judgment_dbt_table extends React.Component {
         <tbody>
           {this.TableBody()}
         </tbody>
-      </table>)
+      </table>
+      )
   }
   //search items
   SearchResult = (startDat, endDate) => {

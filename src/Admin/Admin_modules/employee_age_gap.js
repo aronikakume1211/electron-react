@@ -10,7 +10,7 @@ const routes=[
     main:()=> <Employee_age_gap_table/>
   },
   {
-    path:'/employee_age_gap/form',
+    path:'/affected_body/forms',
     main:()=> <Employee_age_gap_form />
   }
 ]
@@ -18,7 +18,7 @@ function Employee_age_region() {
   return (
     <div>
       <Link
-      to="/employee_age_gap/form" >
+      to="/affected_body/forms" >
         <button
         className="btn btn-primary"
         style={{
