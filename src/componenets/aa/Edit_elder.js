@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRoute as Route, Router, Link } from 'react-router-dom'
 import Datastore from 'nedb';
 let database;
+
 export default class Hiv_Form extends Component {
     constructor(props) {
         super(props);
@@ -237,7 +238,7 @@ export default class Hiv_Form extends Component {
                                         </select>
                                     </div>
                                     <div className="col-sm-6">
-                                        <label htmlFor="age">ዕድሜ</label>
+                                        <label htmlFor="age">hhhh</label>
                                         <input
                                             type="number"
                                             className="form-control"

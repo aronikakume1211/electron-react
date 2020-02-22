@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Datastore from 'nedb';
+
 export default class beggar_form extends Component {
     constructor(props) {
         super(props);
@@ -121,38 +122,49 @@ export default class beggar_form extends Component {
                 console.log("Database created sucessfuly");
             }
         });
-        database.insert(obj, (err, res) => {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log("Database added!");
-                console.log(obj);
+        if (this.state.fname == '' || this.state.lname == '' ||
+            this.state.mname == '' || this.state.Age == '' ||
+             this.state.Kebele == '' ||
+            this.state.village == '' || this.state.servival == '' ||
+            this.state.education == '' ||
+            this.state.income == '') {
+            alert("እባክዎ በትክክል ይሙሉ!")
+        } else {
+            if (this.state.Age < 0 || this.state.income < 0) {
+                alert("ያስገቡት ዕድሜ ከ 0 በታች ነው! ያስተካክሉ!")
+            } else {
+                database.insert(obj, (err, res) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        alert("Registerd!");
+                        this.setState({
+                            fname: '',
+                            lname: '',
+                            mname: '',
+                            Sex: '',
+                            Age: '',
+                            woreda: '',
+                            kebele: '',
+                            village: '',
+                            education: '',
+                            servival: '',
+                            familyTuwari: 'አለ',
+                            familyGrowing: 'የለም',
+                            helpType: 'ገንዘብ',
+                            income: '',
+                        });
+                    }
+                });
 
-                alert("Succefully Added!");
             }
-        });
-        this.setState({
-            fname: '',
-            lname: '',
-            mname: '',
-            Sex: '',
-            Age: '',
-            woreda: '',
-            kebele: '',
-            village: '',
-            education: '',
-            servival: '',
-            familyTuwari: 'አለ',
-            familyGrowing: 'የለም',
-            helpType: 'ገንዘብ',
-            income: '',
-        });
-    };
+        }
+    }
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "5px" }}>
+                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "7%" }}>
                     <div className="row">
                         <div className="col-sm-4" style={{}}>
                             <div className="form-group">
@@ -273,6 +285,52 @@ export default class beggar_form extends Component {
                                 </div>
                             </div>
 
+                        </div>
+                        <div className="col-sm-4" style={{ padding: "3%", backgroundColor: 'grey' }}>
+                            <div className="form-group">
+                                <label htmlFor="lname">ወረዳ</label>
+                                <select
+
+                                    className="form-control"
+                                    value={this.state.woreda}
+                                    onChange={this.onChangeWoreda}
+                                >
+                                    <option >ቡለን</option>
+                                    <option >አሶሳ</option>
+                                    <option >ወምበራ</option>
+                                    <option >ድባጤ</option>
+                                    <option >ዳንጉር</option>
+                                    <option >ባምባሲ</option>
+                                    <option >ቶንጎ</option>
+                                    <option >ሜንጌ</option>
+                                    <option >ቦሎጅንጋፎይ</option>
+                                    <option >ፓዌ</option>
+                                    <option >ማኦ ኮሞ</option>
+                                    <option >ካማሺ</option>
+                                    <option >ቡለን</option>
+                                    <option >አሶሳ</option>
+                                    <option >ወምበራ</option>
+                                    <option >ድባጤ</option>
+                                </select>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="lname">ቀጠና</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={this.state.kebele}
+                                    onChange={this.onChangeKebele}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="lname">ሰፈር</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={this.state.village}
+                                    onChange={this.onChangeVillage}
+                                />
+                            </div>
                         </div>
                     </div>
 

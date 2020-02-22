@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRoute as Route, Router, Link } from 'react-router-dom'
 import Datastore from 'nedb';
 let database;
+
 export default class Hiv_Form extends Component {
     constructor(props) {
         super(props);

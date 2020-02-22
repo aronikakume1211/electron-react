@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRoute as Route, Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Datastore from 'nedb';
-
+import WoredaList from '../Forms/woredaList';
+import ZoneList from '../Forms/zoneList';
+let database;
 export default class Migrant_Form extends Component {
   constructor(props) {
     super(props);
@@ -105,6 +107,14 @@ export default class Migrant_Form extends Component {
     });
   }
 
+  componentDidMount() {
+    database = new Datastore("../Migrant_data.db");
+    database.loadDatabase((err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  }
   onSubmit = (e) => {
 
     e.preventDefault();
@@ -133,27 +143,13 @@ export default class Migrant_Form extends Component {
       || this.state.leaveYr == "" || this.state.returnYr == "" || this.state.phone == "")) {
 
       if (this.state.leaveYr <= this.state.returnYr) {
-
-        const database = new Datastore("../Migrant_data.db");
-        database.loadDatabase((err) => {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log("Database created sucessfuly");
-
-          }
-        });
         database.insert(obj, (err, res) => {
           if (err) {
             console.log(err);
-
           } else {
-            console.log("Database added!");
-            alert("Succefully Added!")
-
+            alert("Registered!")
           }
         });
-
         this.setState({
           fname: '',
           lname: '',
@@ -182,7 +178,7 @@ export default class Migrant_Form extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
+        <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "1%" }}>
           <div className="row">
             <div className="col-sm-3" style={{}}>
             </div>
@@ -194,7 +190,6 @@ export default class Migrant_Form extends Component {
                   className="form-control"
                   value={this.state.fname}
                   onChange={this.onChangeFname}
-                  placeholder="ስም ..."
                   style={{}}
                 />
               </div>
@@ -205,7 +200,6 @@ export default class Migrant_Form extends Component {
                   className="form-control"
                   value={this.state.mname}
                   onChange={this.onChangeMname}
-                  placeholder="የአባት ስም"
                 />
               </div>
               <div className="form-group">
@@ -215,7 +209,6 @@ export default class Migrant_Form extends Component {
                   className="form-control"
                   value={this.state.lname}
                   onChange={this.onChangeLname}
-                  placeholder="የአያት ስም ..."
                 />
               </div>
               <div className="form-group">
@@ -236,7 +229,7 @@ export default class Migrant_Form extends Component {
                   className="form-control"
                   value={this.state.Age}
                   onChange={this.onChangeAge}
-                  placeholder="እድሜ..."
+
                 />
               </div>
               <div className="form-group">
@@ -246,8 +239,11 @@ export default class Migrant_Form extends Component {
                   className="form-control"
                   value={this.state.education}
                   onChange={this.onChangeEducation}
-                  placeholder="የት/ት ደረጃ..."
                 />
+              </div>
+              <div className="form-group">
+                <label>ዞን</label>
+                <ZoneList onChangeSelectZone={this.onChangeZone} />
               </div>
             </div>
             {/* gehsjdj */}
@@ -257,13 +253,16 @@ export default class Migrant_Form extends Component {
             {/* right */}
             <div className="col-sm-3" style={{}}>
               <div className="form-group">
+                <label>ወረዳ</label>
+                <WoredaList onChangeSelectWoreda={this.onChangeWoreda} />
+              </div>
+              <div className="form-group">
                 <label htmlFor="woreda">ቀበሌ</label>
                 <input
                   type="text"
                   className="form-control"
                   value={this.state.Kebele}
                   onChange={this.onChangeKebele}
-                  placeholder="ቀበሌ..."
                 />
               </div>
               <div className="form-group">
@@ -273,7 +272,6 @@ export default class Migrant_Form extends Component {
                   className="form-control"
                   value={this.state.leaveYr}
                   onChange={this.onChangeLeaveYr}
-                  placeholder="የሄደበት/ች ዓ/ም"
                 />
               </div>
               <div className="form-group">
@@ -283,7 +281,6 @@ export default class Migrant_Form extends Component {
                   className="form-control"
                   value={this.state.country}
                   onChange={this.onChangeCountery}
-                  placeholder="የሄደበት/ች አገር..."
                 />
               </div>
               <div className="form-group">
@@ -293,31 +290,22 @@ export default class Migrant_Form extends Component {
                   className="form-control"
                   value={this.state.returnYr}
                   onChange={this.onChangeReturnYr}
-                  placeholder="የተመለሰበት/ች ዓ/ም"
                 />
               </div>
 
               <div className="form-group">
                 <label htmlFor="checkup">አሁን ያለበት/ች ሁኔታ</label>
-                <select className="form-control"
-                  value={this.state.currentStatus}
-                  onChange={this.onChangeCurrentStatus}
-                >
-                  <option>በስራ ላይ ያለ/ች</option>
-                  <option>ስራ ፈላጊ</option>
-                </select>
-                {/* <input
+                <input
                   type="text"
                   className="form-control" id="checkup"
                   value={this.state.currentStatus}
                   onChange={this.onChangeCurrentStatus}
-                  placeholder="አሁን ያለበት/ች ሁኔታ ..."
-                /> */}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="checkup">ስልክ ቁጥር</label>
                 <input
-                  type="tel"
+                  type="text"
                   className="form-control" id="checkup"
                   value={this.state.phone}
                   onChange={this.onChangePhone}
@@ -340,7 +328,6 @@ export default class Migrant_Form extends Component {
                   rows="2"
                   value={this.state.checkup}
                   onChange={this.onChangeCheckup}
-                  placeholder="ምርመራ..."
                 >
 
                 </textarea>

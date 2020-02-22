@@ -83,94 +83,94 @@ export default class Hiv_Form extends Component {
     }
     onChangeFname = (e) => {
         this.setState({
-          fname: e.target.value,
+            fname: e.target.value,
         });
-      }
-      onChangeMname = (e) => {
+    }
+    onChangeMname = (e) => {
         this.setState({
-          mname: e.target.value,
+            mname: e.target.value,
         });
-      }
-      onChangeLname = (e) => {
+    }
+    onChangeLname = (e) => {
         this.setState({
-          lname: e.target.value,
+            lname: e.target.value,
         });
-      }
-      onChangeSex = (e) => {
+    }
+    onChangeSex = (e) => {
         this.setState({
-          Sex: e.target.value,
+            Sex: e.target.value,
         });
-      }
-      onChangeAge = (e) => {
+    }
+    onChangeAge = (e) => {
         this.setState({
-          Age: e.target.value,
+            Age: e.target.value,
         });
-      }
-      onChangeFamilyMale = (e) => {
+    }
+    onChangeFamilyMale = (e) => {
         this.setState({
-          familyMale: e.target.value,
+            familyMale: e.target.value,
         });
-      }
-      onChangeFamilyFemale = (e) => {
+    }
+    onChangeFamilyFemale = (e) => {
         this.setState({
-          familyfemale: e.target.value,
+            familyfemale: e.target.value,
         });
-      }
-      onChangeNoOfWorker = (e) => {
+    }
+    onChangeNoOfWorker = (e) => {
         this.setState({
-          noOfWorker: e.target.value,
+            noOfWorker: e.target.value,
         });
-      }
-      onChangeNotWorkInCaseHealth = (e) => {
+    }
+    onChangeNotWorkInCaseHealth = (e) => {
         this.setState({
-          notWorkIncaseHealth: e.target.value,
+            notWorkIncaseHealth: e.target.value,
         });
-      }
-      onChangeHelpLess = (e) => {
+    }
+    onChangeHelpLess = (e) => {
         this.setState({
-          helpLess: e.target.value,
+            helpLess: e.target.value,
         });
-      }
-      onChangeIncome = (e) => {
+    }
+    onChangeIncome = (e) => {
         this.setState({
-          income: e.target.value,
+            income: e.target.value,
         });
-      }
-      onChangeHousing = (e) => {
+    }
+    onChangeHousing = (e) => {
         this.setState({
-          housing: e.target.value,
+            housing: e.target.value,
         });
-      }
-      onChangeVillage = (e) => {
+    }
+    onChangeVillage = (e) => {
         this.setState({
-          village: e.target.value,
+            village: e.target.value,
         });
-      }
-      onChangeUserType = (e) => {
+    }
+    onChangeUserType = (e) => {
         this.setState({
-          userType: e.target.value,
+            userType: e.target.value,
         });
-      }
-      onChangeSpacificVillage = (e) => {
+    }
+    onChangeSpacificVillage = (e) => {
         this.setState({
-          spcificVilgName: e.target.value,
+            spcificVilgName: e.target.value,
         });
-      }
-      onChangePhone = (e) => {
+    }
+    onChangePhone = (e) => {
         this.setState({
-          phone: e.target.value,
+            phone: e.target.value,
         });
-      }
-      onChangeNumberOfUser = (e) => {
+    }
+    onChangeNumberOfUser = (e) => {
         this.setState({
-          noOfUser: e.target.value,
+            noOfUser: e.target.value,
         });
-      }
-      onChangeLevel = (e) => {
+    }
+    onChangeLevel = (e) => {
         this.setState({
-          level: e.target.value,
+            level: e.target.value,
         });
-      }
+    }
     onSubmit = (e) => {
 
         let id = this.props.match.params.id;
@@ -233,7 +233,7 @@ export default class Hiv_Form extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "10px" }}>
+                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "7%" }}>
                     <div className="row">
 
                         <div className="col-sm-4" style={{}}>
@@ -376,24 +376,60 @@ export default class Hiv_Form extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="checkup">ቤትና የቤት ዕቃ ሁኔታ</label>
-                                <input
-                                    type="text"
-                                    className="form-control" id="checkup"
-                                    value={this.state.housing}
-                                    onChange={this.onChangeHousing}
-                                    placeholder="ቤትና የቤት ዕቃ ሁኔታ ..."
-                                />
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
+                                            <label htmlFor="checkup">ቤትና የቤት ዕቃ ሁኔታ</label>
+                                            <input
+                                                type="text"
+                                                className="form-control" id="checkup"
+                                                value={this.state.housing}
+                                                onChange={this.onChangeHousing}
+                                                placeholder="ቤትና የቤት ዕቃ ሁኔታ ..."
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
+                                            <label htmlFor="checkup">ቤትና የቤት ዕቃ ሁኔታ</label>
+                                            <input
+                                                type="text"
+                                                className="form-control" id="checkup"
+                                                value={this.state.housing}
+                                                onChange={this.onChangeHousing}
+                                                placeholder="ቤትና የቤት ዕቃ ሁኔታ ..."
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="zone">ጎጥ</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    value={this.state.village}
-                                    onChange={this.onChangeVillage}
-                                    placeholder="ጎጥ..."
-                                />
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
+                                            <label htmlFor="zone">ጎጥ</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={this.state.village}
+                                                onChange={this.onChangeVillage}
+                                                placeholder="ጎጥ..."
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
+                                            <label htmlFor="zone">ጎጥ</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={this.state.village}
+                                                onChange={this.onChangeVillage}
+                                                placeholder="ጎጥ..."
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="col-sm-4" style={{}}>

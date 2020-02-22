@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRoute as Route, Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Datastore from 'nedb';
 
 class Sex_Forms extends Component {
@@ -136,7 +136,7 @@ class Sex_Forms extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "5px" }}>
+                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "7%"}}>
                     <div className="row">
                         <div className="col-sm-4" style={{}}>
                             <div className="form-group">

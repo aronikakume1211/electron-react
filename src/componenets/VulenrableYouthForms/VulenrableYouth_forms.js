@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRoute as Route, Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Datastore from 'nedb';
+import ZoneList from '../Forms/zoneList';
+import WoredaList from '../Forms/woredaList';
 
 class mental_forms extends Component {
     constructor(props) {
@@ -99,35 +101,38 @@ class mental_forms extends Component {
 
             }
         });
-        database.insert(obj, (err, res) => {
-            if (err) {
-                console.log(err);
-
+        const { fname, lname, mname, Sex, Age, Zone, woreda, Kebele, Income, ExposeRate, checkup } = obj;
+        if (fname == '' || lname == '' || mname == '' ||
+            Sex == '' || Income == '' || ExposeRate == '' ||
+            checkup == '') {
+            alert("እባክዎ በትክክል ይሙሉ!")
+        } else {
+            if (Age < 0) {
+                alert("ያስገቡት ዕድሜ ከ 0 በታች ነው! ያስተካክሉ!")
             } else {
-                console.log("Database added!");
-                alert("Succefully Added!")
-
+                database.insert(obj, (err, res) => {
+                    if (err) console.log(err)
+                    else {
+                        alert("Registered!")
+                        this.setState({
+                            fname: '',
+                            lname: '',
+                            mname: '',
+                            Sex: '',
+                            Age: '',
+                            Income: '',
+                            ExposeRate: '',
+                            checkup: ''
+                        })
+                    }
+                });
             }
-        });
-
-        this.setState({
-            fname: '',
-            lname: '',
-            mname: '',
-            Sex: '',
-            Age: '',
-            Zone: '',
-            woreda: '',
-            Kebele: '',
-            Income: '',
-            ExposeRate: '',
-            checkup: ''
-        })
+        }
     }
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "5px" }}>
+                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "7%" }}>
                     <div className="row">
                         <div className="col-sm-4" style={{}}>
                             <div className="form-group">
@@ -181,24 +186,26 @@ class mental_forms extends Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="zone">ዞን</label>
-                                <select className="form-control"
+                                <ZoneList onChangeSelectZone={this.onChangeZone} />
+                                {/* <select className="form-control"
                                     value={this.state.Zone}
                                     onChange={this.onChangeZone}
                                 >
                                     <option>መተከል</option>
                                     <option>አሶሳ</option>
                                     <option>ካማሺ</option>
-                                </select>
-                                
+                                </select> */}
+
                             </div>
                             <div className="form-group">
                                 <label htmlFor="woreda">ወረዳ</label>
-                                <input
+                                <WoredaList onChangeSelectWoreda={this.onChangeWoreda} />
+                                {/* <input
                                     type="text"
                                     className="form-control"
                                     value={this.state.woreda}
                                     onChange={this.onChangeWoreda}
-                                />
+                                /> */}
                             </div>
                             <div className="form-group">
                                 <label htmlFor="kebele">ቀበሌ/ቀጠና</label>
@@ -255,7 +262,7 @@ class mental_forms extends Component {
                         }}
                     >
                         <span className="glyphicon glyphicon-step-backward"></span>back
-        </Link>
+                   </Link>
                     <button
                         type="submit"
                         className="btn btn-primary"
@@ -266,7 +273,7 @@ class mental_forms extends Component {
                         onClick={this.onSubmit}
                     >
                         <span className="glyphicon glyphicon-save"></span> Save
-        </button>
+                     </button>
                 </form>
             </div>
         )

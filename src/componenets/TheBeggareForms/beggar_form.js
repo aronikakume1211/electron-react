@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Datastore from 'nedb';
+import RegionList from '../Forms/RegionList';
+import WoredaList from '../Forms/woredaList';
+import ZoneList from '../Forms/zoneList';
 export default class beggar_form extends Component {
     constructor(props) {
         super(props);
@@ -8,7 +11,7 @@ export default class beggar_form extends Component {
             fname: '',
             lname: '',
             mname: '',
-            Sex: '',
+            Sex: 'ወንድ',
             Age: '',
             region: 'ቤኒሻንጉል ጉሙዝ',
             Zone: '',
@@ -128,39 +131,45 @@ export default class beggar_form extends Component {
                 console.log("Database created sucessfuly");
             }
         });
-        database.insert(obj, (err, res) => {
-            if (err) {
-                console.log(err);
+        const { fname, lname, mname, Age } = obj;
+        if (fname == '' || lname == '' || mname == '' || Age == '') {
+            alert("እባክዎ በትክክል ይሙሉ!")
+        } else {
+            if (Age < 0) {
+                alert("ያስገቡት ዕድሜ ከ 0 በታች ነው! ያስተካክሉ!")
+            } else {
+                database.insert(obj, (err, res) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        alert("Registerd!");
+                        this.setState({
+                            fname: '',
+                            lname: '',
+                            mname: '',
+                            Sex: '',
+                            Age: '',
+                            region: 'ቤኒሻንጉል ጉሙዝ',
+                            Zone: '',
+                            woreda: '',
+                            kebele: '',
+                            currentStatus: 'ጎዳና ላይ',
+                            familyStatus: 'አባት ብቻ ያለው/ት',
+                            education: '',
+                            educationStatus: 'በመማር ላይ',
+                            income: 'ልመና',
+                            healthStatus: 'ጤነኛ'
+                        });
+                    }
+                });
             }
-            else {
-                console.log("Database added!");
-                console.log(obj);
-
-                alert("Succefully Added!");
-            }
-        });
-        this.setState({
-            fname: '',
-            lname: '',
-            mname: '',
-            Sex: '',
-            Age: '',
-            region: 'ቤኒሻንጉል ጉሙዝ',
-            Zone: '',
-            woreda: '',
-            kebele: '',
-            currentStatus: 'ጎዳና ላይ',
-            familyStatus: 'አባት ብቻ ያለው/ት',
-            education: '',
-            educationStatus: 'በመማር ላይ',
-            income: 'ልመና',
-            healthStatus: 'ጤነኛ'
-        });
-    };
+        }
+    }
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "5px" }}>
+                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "7%" }}>
                     <div className="row">
                         <div className="col-sm-4" style={{}}>
                             <div className="form-group">
@@ -222,34 +231,37 @@ export default class beggar_form extends Component {
                                 <div className="row">
                                     <div className="col-sm-6">
                                         <label htmlFor="sex">ከልል</label>
-                                        <select className="form-control"
+                                        <RegionList value={this.state.region} onChangeRegion={this.onChangeRegion} />
+                                        {/* <select className="form-control"
                                             value={this.state.region}
                                             onChange={this.onChangeRegion}
                                         >
                                             <option>ቤኒሻንጉል ጉሙዝ</option>
                                             <option>ሴት</option>
                                             <option>ሌላ</option>
-                                        </select>
+                                        </select> */}
                                     </div>
                                     <div className="col-sm-6">
                                         <label htmlFor="age">ዞን</label>
-                                        <input
+                                        <ZoneList onChangeSelectZone={this.onChangeZone} />
+                                        {/* <input
                                             type="text"
                                             className="form-control"
                                             value={this.state.Zone}
                                             onChange={this.onChangeZone}
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-sm-6">
                                         <label htmlFor="sex">ወረዳ</label>
-                                        <input
+                                        <WoredaList onChangeSelectWoreda={this.onChangeWoreda} />
+                                        {/* <input
                                             type="text"
                                             className="form-control"
                                             value={this.state.woreda}
                                             onChange={this.onChangeWoreda}
-                                        />
+                                        /> */}
                                     </div>
                                     <div className="col-sm-6">
                                         <label htmlFor="age">ቀበሌ</label>

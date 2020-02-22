@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Datastore from 'nedb';
 let database, id;
+
 export default class beggar_form extends Component {
     constructor(props) {
         super(props);

@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { Switch, Route, Link } from 'react-router-dom';
-import Home_Table from './HomeForms/Home_table';
-import Home_Form from './HomeForms/Home_form';
+import HomeTable from './HomeForms/Home_table';
+import HomeForm from './HomeForms/Home_form';
 
 //for routing array object
 const routes = [
   {
     path: "/home/Home",
     exact: true,
-    main: () => <Home_Table />
+    main: () => <HomeTable />
   },
   {
     path: "/forms",
     exact: true,
-    main: () => <Home_Form />
+    main: () => <HomeForm />
   }
 ]
 class Home extends Component {

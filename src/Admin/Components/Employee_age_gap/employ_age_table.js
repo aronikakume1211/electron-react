@@ -7,6 +7,7 @@ const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 let database, globalId, globalkey;
 let total, under14 = 0;
+let abovetot = 1;
 class Employee_age_gap extends Component {
   constructor() {
     super();
@@ -67,22 +68,24 @@ class Employee_age_gap extends Component {
   }
   TableBody = () => {
     let counter = 1;
+    console.log(this.state.Affected_body_Data);
+
     let tempCode = 'mebratu';
     let check = 1;
-    let
-      underforty,
-      fortyToeighty,
-      nintyTotwnfour,
-      towenyfivetotoennine,
-      thirtytotrhtyfor,
-      trtyfiftitrynin,
-      fortytofortyfor,
-      fortfiftofortynine,
-      fiftytofifityfife,
-      ubovefiftyfife = 'x';
+    let underforty = '---';
+    let fortyToeighty = '---';
+    let  nintyTotwnfour = '---';
+    let towenyfivetotoennine = '---';
+    let thirtytotrhtyfor = '---';
+    let trtyfiftitrynin = '---';
+    let fortytofortyfor = '---';
+    let fortfiftofortynine = '---';
+    let fiftytofifityfife = '---';
+    let ubovefiftyfife = '---';
+      
     return this.state.Affected_body_Data.map((current, index) => {
       total = index;
-      if (current.code == tempCode) {
+      if (current.code === tempCode) {
         check = 0;
         counter++;
         total++;
@@ -104,117 +107,120 @@ class Employee_age_gap extends Component {
         fortfiftofortynine = '--';
         fiftytofifityfife = '--';
         ubovefiftyfife = '--';
-       }
-      else if (current.age >= 14 && current <= 18) {
-        underforty = '';
-        fortyToeighty = current.age;
-        nintyTotwnfour = '';
-        towenyfivetotoennine = '';
-        thirtytotrhtyfor = '';
-        trtyfiftitrynin = '';
-        fortytofortyfor = '';
-        fortfiftofortynine = '';
-        fiftytofifityfife = '';
-        ubovefiftyfife = '';
+      }
+      else if (current.age >= 14 && current.age <= 18) {
+        underforty = '---';
+        fortyToeighty = current.age
+        nintyTotwnfour = '---';
+        towenyfivetotoennine = '---';
+        thirtytotrhtyfor = '---';
+        trtyfiftitrynin = '--';
+        fortytofortyfor = '---';
+        fortfiftofortynine = '---';
+        fiftytofifityfife = '---';
+        ubovefiftyfife = '---';
 
       }
-      else if (current.age >= 19 && current <= 24) {
-        underforty = '';
-        fortyToeighty = '';
-        nintyTotwnfour = current.age;
-        towenyfivetotoennine = '';
-        thirtytotrhtyfor = '';
-        trtyfiftitrynin = '';
-        fortytofortyfor = '';
-        fortfiftofortynine = '';
-        fiftytofifityfife = '';
-        ubovefiftyfife = '';
-       }
-      else if (current.age >= 25 && current <= 29) {
-        underforty = '';
-        fortyToeighty = '';
-        nintyTotwnfour = '';
-        towenyfivetotoennine = current.age;
-        thirtytotrhtyfor = '';
-        trtyfiftitrynin = '';
-        fortytofortyfor = '';
-        fortfiftofortynine = '';
-        fiftytofifityfife = '';
-        ubovefiftyfife = '';
-       }
-      else if (current.age >= 30 && current <= 34) {
-        underforty = '';
-        fortyToeighty = '';
-        nintyTotwnfour = '';
-        towenyfivetotoennine = '';
-        thirtytotrhtyfor = current.age;
-        trtyfiftitrynin = '';
-        fortytofortyfor = '';
-        fortfiftofortynine = '';
-        fiftytofifityfife = '';
-        ubovefiftyfife = '';
-       }
-      else if (current.age >= 35 && current <= 39) {
-        underforty = '';
-        fortyToeighty = '';
-        nintyTotwnfour = '';
-        towenyfivetotoennine = '';
-        thirtytotrhtyfor = '';
-        trtyfiftitrynin = current.age;
-        fortytofortyfor = '';
-        fortfiftofortynine = '';
-        fiftytofifityfife = '';
-        ubovefiftyfife = '';
-       }
-      else if (current.age >= 40 && current <= 44) {
-        underforty = '';
-        fortyToeighty = '';
-        nintyTotwnfour = '';
-        towenyfivetotoennine = '';
-        thirtytotrhtyfor = '';
-        trtyfiftitrynin = '';
-        fortytofortyfor = current.age;
-        fortfiftofortynine = '';
-        fiftytofifityfife = '';
-        ubovefiftyfife = '';
-       }
-      else if (current.age >= 45 && current <= 49) { 
-        underforty = '';
-        fortyToeighty = '';
-        nintyTotwnfour = '';
-        towenyfivetotoennine = '';
-        thirtytotrhtyfor = '';
-        trtyfiftitrynin = '';
-        fortytofortyfor = '';
-        fortfiftofortynine = current.age;
-        fiftytofifityfife = '';
-        ubovefiftyfife = '';
+      else if (current.age >= 19 && current.age <= 24) {
+        underforty = '---';
+        fortyToeighty = '---';
+        nintyTotwnfour = current.age
+        towenyfivetotoennine = '---';
+        thirtytotrhtyfor = '---';
+        trtyfiftitrynin = '--';
+        fortytofortyfor = '---';
+        fortfiftofortynine = '---';
+        fiftytofifityfife = '---';
+        ubovefiftyfife = '---';
       }
-      else if (current.age >= 50 && current <= 55) {
-        underforty = '';
-        fortyToeighty = '';
-        nintyTotwnfour = '';
-        towenyfivetotoennine = '';
-        thirtytotrhtyfor = '';
-        trtyfiftitrynin = '';
-        fortytofortyfor = '';
-        fortfiftofortynine = '';
+      else if (current.age >= 25 && current.age <= 29) {
+        underforty = '---';
+        fortyToeighty = '---';
+        nintyTotwnfour = '---';
+        towenyfivetotoennine = current.age;
+        thirtytotrhtyfor = '---';
+        trtyfiftitrynin = '--';
+        fortytofortyfor = '---';
+        fortfiftofortynine = '---';
+        fiftytofifityfife = '---';
+        ubovefiftyfife = '---';
+      }
+      else if (current.age >= 30 && current.age <= 34) {
+        underforty = '---';
+        fortyToeighty = '---';
+        nintyTotwnfour = '---';
+        towenyfivetotoennine = '---';
+        thirtytotrhtyfor = current.age;
+        trtyfiftitrynin = '---';
+        fortytofortyfor = '---';
+        fortfiftofortynine = '---';
+        fiftytofifityfife = '---';
+        ubovefiftyfife = '---';
+        abovetot++;
+      }
+      else if (current.age >= 35 && current.age <= 39) {
+        underforty = '---';
+        fortyToeighty = '---';
+        nintyTotwnfour = '---';
+        towenyfivetotoennine = '---';
+        thirtytotrhtyfor = '---';
+        trtyfiftitrynin = current.age;
+        fortytofortyfor = '---';
+        fortfiftofortynine = '---';
+        fiftytofifityfife = '---';
+        ubovefiftyfife = '---';
+      }
+      else if (current.age >= 40 && current.age <= 44) {
+        underforty = '---';
+        fortyToeighty = '---';
+        nintyTotwnfour = '---';
+        towenyfivetotoennine = '---';
+        thirtytotrhtyfor = '---';
+        trtyfiftitrynin = '---';
+        fortytofortyfor = current.age;
+        fortfiftofortynine = '---';
+        fiftytofifityfife = '---';
+        ubovefiftyfife = '---';
+      }
+      else if (current.age >= 45 && current.age <= 49) {
+        underforty = '---';
+        fortyToeighty = '---';
+        nintyTotwnfour = '---';
+        towenyfivetotoennine = '---';
+        thirtytotrhtyfor = '---';
+        trtyfiftitrynin = '---';
+        fortytofortyfor = '---';
+        fortfiftofortynine = current.age;
+        fiftytofifityfife = '---';
+        ubovefiftyfife = '---';
+      }
+      else if (current.age >= 50 && current.age <= 55) {
+        underforty = '---';
+        fortyToeighty = '---';
+        nintyTotwnfour = '---';
+        towenyfivetotoennine = '---';
+        thirtytotrhtyfor = '---';
+        trtyfiftitrynin = '---';
+        fortytofortyfor = '---';
+        fortfiftofortynine = '---';
         fiftytofifityfife = current.age;
-        ubovefiftyfife = '';
+        ubovefiftyfife = '---';
 
       }
       else if (current.age > 55) {
-        underforty = '';
-        fortyToeighty = '';
-        nintyTotwnfour = '';
-        towenyfivetotoennine = '';
-        thirtytotrhtyfor = '';
-        trtyfiftitrynin = '';
-        fortytofortyfor = '';
-        fortfiftofortynine = '';
-        fiftytofifityfife = '';
-        ubovefiftyfife = current.age;
-       }
+        underforty = '---';
+        fortyToeighty = '---';
+        nintyTotwnfour = '---';
+        towenyfivetotoennine = '---';
+        thirtytotrhtyfor = '---';
+        trtyfiftitrynin = '--';
+        fortytofortyfor = '---';
+        fortfiftofortynine = '---';
+        fiftytofifityfife = '---';
+        ubovefiftyfife = current.age
+       console.log(total++);
+       
+      }
       return (
         <tr key={index}>
           <td>{++index}</td>
@@ -265,8 +271,8 @@ class Employee_age_gap extends Component {
             <td></td>
             <td></td>
             <td></td>
-            <td>{under14}</td>
-            <td></td>
+            <td>{}</td>
+            <td>{}</td>
             <td></td>
             <td></td>
             <td></td>

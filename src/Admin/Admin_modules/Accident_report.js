@@ -1,16 +1,16 @@
 import React from 'react'
-import Accident_report_table from '../Components/Accident_report/Accident_report_table'
-import Accident_report_form from '../Components/Accident_report/Accident_report_form'
+import AccidentReportTable from '../Components/Accident_report/Accident_report_table'
+import AccidentReportRorm from '../Components/Accident_report/Accident_report_form'
 import { Switch, Route, Link } from 'react-router-dom'
 const routes = [
   {
     path: '/accident_report',
     exact: true,
-    main: () => <Accident_report_table />
+    main: () => <AccidentReportTable />
   },
   {
     path: '/accident_report/report_form',
-    main: () => <Accident_report_form />
+    main: () => <AccidentReportRorm />
   }
 ]
 function Accident_report() {

@@ -99,35 +99,45 @@ class mental_forms extends Component {
 
             }
         });
-        database.insert(obj, (err, res) => {
-            if (err) {
-                console.log(err);
-
+        if (this.state.fname == '' || this.state.lname == '' ||
+            this.state.mname == '' || this.state.Age == '' ||
+            this.state.woreda == '' || this.state.Kebele == '' ||
+            this.state.Sex == '' || this.state.Zone == '' ||
+            this.state.Income == '' || this.state.ExposeRate == '' ||
+            this.state.checkup == '') {
+            alert("እባክዎ በትክክል ይሙሉ!")
+        } else {
+            if (this.state.Age < 0) {
+                alert("ያስገቡት ዕድሜ ከ 0 በታች ነው! ያስተካክሉ!")
             } else {
-                console.log("Database added!");
-                alert("Succefully Added!")
+                database.insert(obj, (err, res) => {
+                    if (err) {
+                        console.log(err);
 
+                    } else {
+                        alert("Registerd!")
+                        this.setState({
+                            fname: '',
+                            lname: '',
+                            mname: '',
+                            Sex: '',
+                            Age: '',
+                            Zone: '',
+                            woreda: '',
+                            Kebele: '',
+                            Income: '',
+                            ExposeRate: '',
+                            checkup: ''
+                        })
+                    }
+                });
             }
-        });
-
-        this.setState({
-            fname: '',
-            lname: '',
-            mname: '',
-            Sex: '',
-            Age: '',
-            Zone: '',
-            woreda: '',
-            Kebele: '',
-            Income: '',
-            ExposeRate: '',
-            checkup: ''
-        })
+        }
     }
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "5px" }}>
+                <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "7%" }}>
                     <div className="row">
                         <div className="col-sm-4" style={{}}>
                             <div className="form-group">
@@ -189,7 +199,7 @@ class mental_forms extends Component {
                                     <option>አሶሳ</option>
                                     <option>ካማሺ</option>
                                 </select>
-                                
+
                             </div>
                             <div className="form-group">
                                 <label htmlFor="woreda">ወረዳ</label>

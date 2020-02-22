@@ -96,40 +96,46 @@ export default class Hiv_Form extends Component {
       if (err) {
         console.log(err);
       }
-      else {
-        console.log("Database created sucessfuly");
-      }
     });
-    database.insert(obj, (err, res) => {
-      if (err) {
-        console.log(err);
-      }
-      else {
-        console.log("Database added!");
-        console.log(obj);
+    if (this.state.fname == '' || this.state.lname == '' ||
+      this.state.mname == '' || this.state.Age == '' ||
+      this.state.help == '' || this.state.whereHelp == '' ||
+      this.state.income == '') {
+      alert("እባክዎ በትክክል ይሙሉ!")
+    } else {
+      if (this.state.income < 0 || this.state.Age < 0) {
+        alert("ያስገቡት የወር ገቢ እና ዕድሜ ከ 0 በታች ነው! ያስተካክሉ!")
+      } else {
+        database.insert(obj, (err, res) => {
+          if (err) {
+            console.log(err);
+          }
+          else {
+            alert("Registered!");
+          }
+        });
+        this.setState({
+          fname: '',
+          lname: '',
+          mname: '',
+          Sex: 'ወንድ',
+          Age: '',
+          akalGudat: 'ማየት የተሳነው/ች',
+          underAss: 'አንድ እግር የሌለው/ት',
+          accident: 'በተፈጥሮ',
+          help: '',
+          whereHelp: '',
+          income: ''
 
-        alert("Succefully Added!");
+        });
       }
-    });
-    this.setState({
-      fname: '',
-      lname: '',
-      mname: '',
-      Sex: 'ወንድ',
-      Age: '',
-      akalGudat: 'ማየት የተሳነው/ች',
-      underAss: 'አንድ እግር የሌለው/ት',
-      accident: 'በተፈጥሮ',
-      help: '',
-      whereHelp: '',
-      income: ''
+    }
 
-    });
-  };
+  }
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "5px" }}>
+        <form onSubmit={this.onSubmit} style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", padding: "7%" }}>
           <div className="row">
             <div className="col-sm-4" style={{}}>
               <div className="form-group">
@@ -238,7 +244,7 @@ export default class Hiv_Form extends Component {
                   <div className="form-group">
                     <label htmlFor="checkup">የወር ገቢ</label>
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="checkup"
                       value={this.state.income}
