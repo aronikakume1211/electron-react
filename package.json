@@ -55,7 +55,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^7.1.2",
+    "electron": "^13.6.6",
     "asar": "^2.0.1",
     "electron-packager": "^14.1.1"
   }
